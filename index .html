@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>azt Plagarism detector</title>
+  </head>
+  <body>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #inputField {
+        padding-top: 1%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+      }
+      #inputField > * {
+        margin: 1%;
+      }
+      #output{
+        display: flex;
+        flex-direction: column;
+    }
+    </style>
+    <!-- html I/O -->
+    <div id="inputField">
+      <input
+        type="text"
+        name="Studentname"
+        id="Studentname"
+        placeholder="Student name"
+        required
+      />
+      <input
+        type="text"
+        name="codeRepo"
+        id="codeRepo"
+        placeholder="code Repo"
+        required
+      />
+      <div id="mainFunc" onclick="mainFunc()">run function</div>
+    </div>
+    <div id="results">
+      <marquee behavior="scroll" direction="up" scrollamount="1" id="output"></marquee>
+    </div>
+    <script>
+      let Studentname = () => document.querySelector("#Studentname").value;
+      let codeRepo = () => document.querySelector("#codeRepo").value;
+      let output = ()=>document.querySelector('#output')
+      let lib=[]
+      window.addEventListener("keydown", function (event) {
+        
+        if (event.key === "Enter" && !Studentname()=='' && !codeRepo()=='') {
+          mainFunc();
+        }
+      });
+      let mainFunc = () => {
+    lib.push({name:Studentname(),repo:codeRepo(), unique:50})
+        document.querySelector("#Studentname").value=''
+        document.querySelector("#codeRepo").value=''
+        output().innerHTML=''
+        lib.forEach((Student)=>{
+    output().innerHTML+=`
+    <p id="${Student.name}">
+        name: ${Student.name}
+        </p>
+    `
+})
+let Student= lib.at(-1)
+let strLength= Student.repo.length-1
+let length =()=>Math.floor(strLength* Math.random())
+let start= length()
+let tester=()=> Student.repo.split('').splice(start,Math.floor((strLength- start)*Math.random())).join('')
+console.log(tester())
+    };
+    </script>
+  </body>
+</html>
