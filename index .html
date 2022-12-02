@@ -55,8 +55,9 @@
       let codeRepo = () => document.querySelector("#codeRepo").value;
       let output = ()=>document.querySelector('#output')
       let lib=[]
+      let i
+      let u
       window.addEventListener("keydown", function (event) {
-        
         if (event.key === "Enter" && !Studentname()=='' && !codeRepo()=='') {
           mainFunc();
         }
@@ -78,8 +79,29 @@ let strLength= Student.repo.length-1
 let length =()=>Math.floor(strLength* Math.random())
 let start= length()
 let tester=()=> Student.repo.split('').splice(start,Math.floor((strLength- start)*Math.random())).join('')
-console.log(tester())
-    };
+let testVal
+let getTestValue= ()=>{
+    testVal= tester()
+    console.log(testVal.length)
+    console.log(testVal)
+    if( testVal.length>4){
+        console.log(testVal)
+    }else{
+getTestValue()
+console.log('failed')
+console.log(`value: ${testVal}
+length: ${testVal.length}   `)
+}
+}
+
+if (lib.length>1){
+for(i=0;i<lib.length;i++){
+Student= lib[i]
+getTestValue() 
+}
+}
+
+};
     </script>
   </body>
 </html>
