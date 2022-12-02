@@ -81,17 +81,14 @@ let start= length()
 let tester=()=> Student.repo.split('').splice(start,Math.floor((strLength- start)*Math.random())).join('')
 let testVal
 let getTestValue= ()=>{
-    testVal= tester()
-    console.log(testVal.length)
-    console.log(testVal)
-    if( testVal.length>4){
-        console.log(testVal)
-    }else{
-getTestValue()
-console.log('failed')
-console.log(`value: ${testVal}
-length: ${testVal.length}   `)
-}
+    testVal=tester()
+    console.log(testVal.length,testVal )
+    if (testVal.length>4){
+      console.log(testVal)
+   }
+   else {
+    getTestValue()
+   }
 }
 
 if (lib.length>1){
